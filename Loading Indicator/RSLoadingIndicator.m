@@ -10,12 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface RSLoadingIndicator () {
-    float _startAngle;
-    float _endAngle;
-    float _y;
-    float _spring;
-    int _springDirection;
-    int _counter;
+    float _startAngle; // Start angle of the cycle, never changed
+    float _endAngle; // End angle of the cycle
+    float _startY; // Line start y
+    float _spring; // Current spring
+    int _springDirection; // Sprint direction +/-
+    int _counter; // Counter, used for rotation
 }
 
 @end
@@ -48,7 +48,7 @@ float Degree2Radian(float degree) {
         
         _startAngle = -90;
         _endAngle = -90;
-        _y = -(2.0f * M_PI * radius);
+        _startY = -(2.0f * M_PI * radius);
         _spring = 0;
         _springDirection = 0;
     }
@@ -57,13 +57,13 @@ float Degree2Radian(float degree) {
 }
 
 - (void)didScroll:(float)offset {
-    if (_y == 0) {
+    if (_startY == 0) {
         if (_delegate && [_delegate respondsToSelector:@selector(startLoading)]) {
             [_delegate startLoading];
         }
         
-        _y = 1;
-    } else if (_y == 1) {
+        _startY = 1;
+    } else if (_startY == 1) {
         if (_counter == (NSUIntegerMax - 1)) {
             _counter = 0;
         }
@@ -71,13 +71,13 @@ float Degree2Radian(float degree) {
         _counter++;
         [self setNeedsDisplay];
     } else {
-        _y += offset;
+        _startY += offset;
         float deltaAngle = Radian2Degree(offset / radius);
         _endAngle += deltaAngle;
         
-        if (roundf(_y) >= 0) {
+        if (roundf(_startY) >= 0) {
             _endAngle = 270;
-            _y = 0;
+            _startY = 0;
         }
         
         [self setNeedsDisplay];
@@ -86,7 +86,7 @@ float Degree2Radian(float degree) {
 
 - (void)stopLoading {
     _endAngle = -90;
-    _y = -(2.0f * M_PI * radius);
+    _startY = -(2.0f * M_PI * radius);
     [self setNeedsDisplay];
     
     if (_delegate && [_delegate respondsToSelector:@selector(stopLoading)]) {
@@ -106,13 +106,13 @@ float Degree2Radian(float degree) {
     
     CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(ctx, 2);
-    CGContextMoveToPoint(ctx, center.x, center.y - radius + _y);
+    CGContextMoveToPoint(ctx, center.x, center.y - radius + _startY);
     CGContextAddLineToPoint(ctx, center.x, center.y - radius);
     CGContextAddArc(ctx, center.x, center.y, radius, Degree2Radian(_startAngle), Degree2Radian(_endAngle), NO);
     CGPoint point = CGContextGetPathCurrentPoint(ctx);
     CGContextDrawPath(ctx, kCGPathStroke);
     
-    if (_y < 0) {
+    if (_startY < 0) {
         float degree = 0;
         
         if ((point.x < center.x && point.y > center.y) || (point.x > center.x && point.y > center.y)) {

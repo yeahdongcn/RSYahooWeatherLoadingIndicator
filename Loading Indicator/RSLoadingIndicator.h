@@ -19,15 +19,15 @@
 @end
 
 @interface RSLoadingIndicator : UIView {
-    float radius;
-    CGPoint center;
-    float arrowEdgeLength;
-    float radianceDegree;
-    float radianceOffset;
-    float radianceMinLength;
-    float radianceMaxLength;
-    float sprintMax;
-    float rotationSpeed;
+    float radius; // Circle radius
+    CGPoint center; // Circle center
+    float arrowEdgeLength; // Arrow is equilateral triangle
+    float radianceDegree; // How many degree between two radiance
+    float radianceOffset; // Offset from circle
+    float radianceMinLength; // Min length of the radiance
+    float radianceMaxLength; // Max length of the radiance
+    float sprintMax; // Radiance act like a sprint and this value controls the threshold
+    float rotationSpeed; // Rotation spped
 }
 
 @property (assign, nonatomic) id<RSLoadingIndicatorDelegate> delegate;
