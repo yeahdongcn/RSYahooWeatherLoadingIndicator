@@ -11,6 +11,7 @@
 
 @interface RSViewController () <RSLoadingIndicatorDelegate> {
     RSLoadingIndicator *indicator;
+    UIButton *button;
     NSTimer *ticker;
     NSTimer *stopTimer;
 }
@@ -27,7 +28,23 @@
     indicator.delegate = self;
     [self.view addSubview:indicator];
     
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:NSLocalizedString(@"Restart", nil) forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button sizeToFit];
+    CGRect frame = button.frame;
+    frame.origin.x = roundf((self.view.bounds.size.width - frame.size.width) / 2.0f);
+    frame.origin.y = 100;
+    button.frame = frame;
+    [indicator addSubview:button];
+    button.enabled = NO;
+    
     ticker = [[NSTimer scheduledTimerWithTimeInterval:1.0f / 33.0f target:self selector:@selector(tick) userInfo:nil repeats:YES] retain];
+}
+
+- (void)buttonClicked:(id)sender {
+    ticker = [[NSTimer scheduledTimerWithTimeInterval:1.0f / 33.0f target:self selector:@selector(tick) userInfo:nil repeats:YES] retain];
+    button.enabled = NO;
 }
 
 - (void)tick {
@@ -57,6 +74,8 @@
     [stopTimer invalidate];
     [stopTimer release];
     stopTimer = nil;
+    
+    button.enabled = YES;
 }
 
 @end

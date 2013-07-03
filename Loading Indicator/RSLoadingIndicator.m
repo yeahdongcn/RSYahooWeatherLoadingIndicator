@@ -44,7 +44,7 @@ float Degree2Radian(float degree) {
         radianceMinLength = 5;
         radianceMaxLength = 15;
         sprintMax = 1;
-        rotationSpeed = 0.1f;
+        rotationSpeed = 1.0f;
         
         _startAngle = -90;
         _endAngle = -90;
