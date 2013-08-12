@@ -6,5 +6,5 @@ This project clones the Yahoo weather app's loading indicator with no image at a
 
 Open sample to see lot more.
 
-[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://player.youku.com/player.php/sid/XNTc4MDQ5MzEy/v.swf)
+[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://v.youku.com/v_show/id_XNTc4MDQ5MzEy.html)
 
