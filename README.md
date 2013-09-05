@@ -1,7 +1,7 @@
 Yahoo-Weather-Loading-Indicator
 ===============================
 
-![ScreenShot](https://s3.amazonaws.com/cocoacontrols_production/uploads/control_image/image/1579/iOS_Simulator_Screen_shot_Aug_2__2013_12.22.36_PM.png)
+![ScreenShot](https://s3.amazonaws.com/cocoacontrols_production/uploads/control_image/image/1782/iOS_Simulator_Screen_shot_Sep_5__2013_3.53.52_PM.png)
 
 Have you unpack the Yahoo weather app? It contains hundreds of images for animating the loading indicator.
 
