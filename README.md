@@ -11,3 +11,7 @@ Open sample to see lot more.
 
 [![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://v.youku.com/v_show/id_XNTc4MDQ5MzEy.html)
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yeahdongcn/yahoo-weather-loading-indicator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
