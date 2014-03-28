@@ -13,9 +13,6 @@ Open sample to see lot more.
 
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yeahdongcn/yahoo-weather-loading-indicator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yeahdongcn/rsyahooweatherloadingindicator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
